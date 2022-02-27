@@ -67,5 +67,18 @@
             android:layout_gravity="center"
             android:text="Delete" />
 
+        <Button
+            android:id="@+id/btnDialogShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Dialog Show" />
+        <Button
+            android:id="@+id/btnDialogDismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Dialog Dismiss" />
+
     </LinearLayout>
 </layout>

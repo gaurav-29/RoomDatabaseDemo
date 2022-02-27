@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.room.Room;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,11 +19,13 @@ public class MainActivity2 extends AppCompatActivity {
     MainActivity2 mContext = MainActivity2.this;
     ActivityMain2Binding mBinding;
     StudentDatabase studentDatabase;
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(mContext, R.layout.activity_main2);
 
+        dialog = new ProgressDialog(this);
         setupStudentDatabase();
         onClickListeners();
     }
@@ -54,6 +57,20 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 studentDatabase.dao().deleteStudent(mBinding.tvRollNo3.getText().toString());
+            }
+        });
+        mBinding.btnDialogShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setMessage("Updating...");
+                dialog.setCancelable(false);
+                //dialog.show();
+            }
+        });
+        mBinding.btnDialogDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
             }
         });
     }
